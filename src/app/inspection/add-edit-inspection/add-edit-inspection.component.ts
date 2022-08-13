@@ -85,26 +85,4 @@ export class AddEditInspectionComponent implements OnInit {
     });
   }
 
-  delete(item:any){
-    if(confirm(`Do you want to delete inspection ${item.id}`)){
-      this.service.deleteInspection(item.id).subscribe(res=>{
-        var closeModalBtn = document.getElementById('add-edit-modal-close');
-      if(closeModalBtn){
-        closeModalBtn.click();
-      }
-
-      var showDeleteSuccess = document.getElementById('delete-success-alert');
-      if(showDeleteSuccess){
-        showDeleteSuccess.style.display = "block";
-      }
-      setTimeout(function() {
-        if(showDeleteSuccess){
-          showDeleteSuccess.style.display = "none";
-        }
-      }, 4000);
-      this.inspectionList$ = this.service.getInspectionList();
-      });
-    }
-  }
-
 }
